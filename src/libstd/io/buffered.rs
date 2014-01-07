@@ -123,14 +123,10 @@ impl<R: Reader> Reader for BufferedReader<R> {
             nread
         };
         self.pos += nread;
-        if nread == 0 && self.inner.eof() && buf.len() != 0 {
-                return None;
+        if nread == 0 && buf.len() != 0 {
+            return None;
         }
         Some(nread)
-    }
-
-    fn eof(&mut self) -> bool {
-        self.pos == self.cap && self.inner.eof()
     }
 }
 
@@ -267,7 +263,6 @@ impl<W: Writer> Decorator<W> for InternalBufferedWriter<W> {
 
 impl<W: Reader> Reader for InternalBufferedWriter<W> {
     fn read(&mut self, buf: &mut [u8]) -> Option<uint> { self.get_mut_ref().inner.read(buf) }
-    fn eof(&mut self) -> bool { self.get_mut_ref().inner.eof() }
 }
 
 /// Wraps a Stream and buffers input and output to and from it
@@ -300,7 +295,6 @@ impl<S: Stream> Buffer for BufferedStream<S> {
 
 impl<S: Stream> Reader for BufferedStream<S> {
     fn read(&mut self, buf: &mut [u8]) -> Option<uint> { self.inner.read(buf) }
-    fn eof(&mut self) -> bool { self.inner.eof() }
 }
 
 impl<S: Stream> Writer for BufferedStream<S> {
@@ -334,10 +328,6 @@ mod test {
         fn read(&mut self, _: &mut [u8]) -> Option<uint> {
             None
         }
-
-        fn eof(&mut self) -> bool {
-            true
-        }
     }
 
     impl Writer for NullStream {
@@ -352,10 +342,6 @@ mod test {
     impl Reader for ShortReader {
         fn read(&mut self, _: &mut [u8]) -> Option<uint> {
             self.lengths.shift_opt()
-        }
-
-        fn eof(&mut self) -> bool {
-            self.lengths.len() == 0
         }
     }
 
@@ -449,7 +435,6 @@ mod test {
 
         impl io::Reader for S {
             fn read(&mut self, _: &mut [u8]) -> Option<uint> { None }
-            fn eof(&mut self) -> bool { true }
         }
 
         let mut stream = BufferedStream::new(S);

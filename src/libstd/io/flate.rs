@@ -69,8 +69,6 @@ impl<R: Reader> InflateReader<R> {
 
 impl<R: Reader> Reader for InflateReader<R> {
     fn read(&mut self, _buf: &mut [u8]) -> Option<uint> { fail!() }
-
-    fn eof(&mut self) -> bool { fail!() }
 }
 
 impl<R: Reader> Decorator<R> for InflateReader<R> {

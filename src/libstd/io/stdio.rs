@@ -216,8 +216,6 @@ impl Reader for StdReader {
             }
         }
     }
-
-    fn eof(&mut self) -> bool { false }
 }
 
 /// Representation of a writer to a standard output stream

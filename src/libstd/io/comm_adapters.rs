@@ -77,8 +77,6 @@ impl Reader for PortReader {
             Some(num_read)
         }
     }
-
-    fn eof(&mut self) -> bool { self.closed }
 }
 
 /// Allows writing to a chan.
