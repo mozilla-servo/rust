@@ -8,16 +8,18 @@
 // option. This file may not be copied, modified, or distributed
 // except according to those terms.
 
+use container::Container;
 use fmt;
 use from_str::from_str;
 use libc::exit;
 use option::{Some, None, Option};
+use iter::Iterator;
 use io;
 use io::stdio::StdWriter;
 use io::buffered::LineBufferedWriter;
 use rt::crate_map::{ModEntry, CrateMap, iter_crate_map, get_crate_map};
 use str::StrSlice;
-use vec::{ImmutableVector, MutableTotalOrdVector};
+use vec::{ImmutableVector, MutableTotalOrdVector, OwnedVector};
 #[cfg(test)] use cast::transmute;
 
 struct LogDirective {
