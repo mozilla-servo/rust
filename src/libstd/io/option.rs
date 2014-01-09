@@ -48,16 +48,6 @@ impl<R: Reader> Reader for Option<R> {
             }
         }
     }
-
-    fn eof(&mut self) -> bool {
-        match *self {
-            Some(ref mut reader) => reader.eof(),
-            None => {
-                io_error::cond.raise(prev_io_error());
-                true
-            }
-        }
-    }
 }
 
 impl<S: Seek> Seek for Option<S> {
