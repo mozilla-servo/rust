@@ -19,7 +19,7 @@
 
 #[crate_id = "green#0.9"];
 #[license = "MIT/ASL2"];
-#[crate_type = "rlib"];
+//#[crate_type = "rlib"];
 #[crate_type = "dylib"];
 
 // NB this does *not* include globs, please keep it that way.

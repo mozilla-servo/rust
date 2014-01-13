@@ -16,7 +16,7 @@
 
 #[crate_id = "native#0.9"];
 #[license = "MIT/ASL2"];
-#[crate_type = "rlib"];
+//#[crate_type = "rlib"];
 #[crate_type = "dylib"];
 
 // Allow check-stage0-native for now

@@ -16,7 +16,7 @@
 #[crate_id = "syntax#0.9"];
 #[license = "MIT/ASL2"];
 #[crate_type = "dylib"];
-#[crate_type = "rlib"];
+//#[crate_type = "rlib"];
 
 #[feature(macro_rules, globs, managed_boxes)];
 

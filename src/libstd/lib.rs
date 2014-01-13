@@ -46,7 +46,7 @@
 #[crate_id = "std#0.9"];
 #[comment = "The Rust standard library"];
 #[license = "MIT/ASL2"];
-#[crate_type = "rlib"];
+//#[crate_type = "rlib"];
 #[crate_type = "dylib"];
 #[doc(html_logo_url = "http://www.rust-lang.org/logos/rust-logo-128x128-blk.png",
       html_favicon_url = "http://www.rust-lang.org/favicon.ico",

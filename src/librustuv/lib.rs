@@ -36,7 +36,7 @@ via `close` and `delete` methods.
 
 #[crate_id = "rustuv#0.9"];
 #[license = "MIT/ASL2"];
-#[crate_type = "rlib"];
+//#[crate_type = "rlib"];
 #[crate_type = "dylib"];
 
 #[feature(macro_rules)];

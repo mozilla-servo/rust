@@ -12,7 +12,7 @@
 #[comment = "The Rust compiler"];
 #[license = "MIT/ASL2"];
 #[crate_type = "dylib"];
-#[crate_type = "rlib"];
+//#[crate_type = "rlib"];
 
 #[feature(macro_rules, globs, struct_variant, managed_boxes)];
 
