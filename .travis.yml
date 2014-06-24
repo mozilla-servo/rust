@@ -18,8 +18,9 @@ script:
 - if [ "${TRAVIS_OS_NAME}" = "linux" ]; then  ./travis.linux.script.sh; fi
 - if [ "${TRAVIS_OS_NAME}" = "osx" ]; then ./travis.osx.script.sh; fi
 
-env: LLVM_VERSION=3.4
-  - ANDROID=1
+env: 
+ - ANDROID=1
+ - ANDROID=0
 
 notifications:
   email: false
