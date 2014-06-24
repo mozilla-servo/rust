@@ -1,0 +1,48 @@
+language: c
+
+os:
+- linux
+- osx
+
+install:
+- if [ "${TRAVIS_OS_NAME}" = "linux" ]; then  ./travis.linux.install.deps.sh; fi
+- if [ "${TRAVIS_OS_NAME}" = "osx" ]; then ./travis.osx.install.deps.sh; fi
+
+before_script:
+- if [ "${TRAVIS_OS_NAME}" = "linux" ]; then  ./travis.linux.before_script.sh; fi
+- if [ "${TRAVIS_OS_NAME}" = "osx" ]; then ./travis.osx.before_script.sh; fi
+- export NO_BENCH=1
+- export RUST_SHA=`git submodule | grep rust | sed -E 's/[\+-\ ]?([0-9a-f]+).*/\1/g’`
+
+script:
+- if [ "${TRAVIS_OS_NAME}" = "linux" ]; then  ./travis.linux.script.sh; fi
+- if [ "${TRAVIS_OS_NAME}" = "osx" ]; then ./travis.osx.script.sh; fi
+
+env: LLVM_VERSION=3.4
+  - ANDROID=1
+
+notifications:
+  email: false
+
+branches:
+  only:
+  - travis
+  - snapshot
+
+after_success:
+- ls
+- if [ "${TRAVIS_OS_NAME}" = "linux" ]; then ls x86_64-unknown-linux-gnu; fi
+- if [ "${TRAVIS_OS_NAME}" = "osx" ]; then ls x86_64-apple-darwin; fi
+- ls dist
+
+deploy:
+  provider: s3
+  access_key_id: AKIAIN2TFNMLB7CJFXDA
+  secret_access_key:
+    secure: at/OXzOHnl/BQ34m9ScoC+MyAwNGx8ywZ9CdnERZl8vbcKpJ+IrVFXRcYcEG18dhdb2lasbwa1b30ffKFWecNNUbNi/+brnNvJ5HufJwjKTnzI8ZB+Jh1v9RG6cOyIt0THf2WuGM+tn4wM35+zV48gpg8+ts9ijaLiQlqtPLuTo=
+  bucket: servo-rust
+  local-dir: dist
+  skip_cleanup: true
+  upload-dir: $RUST_SHA
+  on:
+    branch: travis snapshot
