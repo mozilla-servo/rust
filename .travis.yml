@@ -53,3 +53,4 @@ deploy:
   upload-dir: $RUST_SHA
   on:
     branch: travis snapshot
+
