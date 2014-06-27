@@ -16,7 +16,7 @@ before_script:
 - if [ "${TRAVIS_OS_NAME}" = "linux" and "${ANDROID}" = "1"]; then  ./travis.linux-android.before_script.sh; fi
 #- if [ "${TRAVIS_OS_NAME}" = "osx" and "${ANDROID}" = "1"]; then ./travis.osx-android.before_script.sh; fi
 - export NO_BENCH=1
-- export RUST_SHA=`git submodule | grep rust | sed -E 's/[\+-\ ]?([0-9a-f]+).*/\1/g’`
+- export RUST_SHA=`git submodule | grep rust | sed -E 's/[\+-\ ]?([0-9a-f]+).*/\1/g'`
 
 script:
 - if [ "${TRAVIS_OS_NAME}" = "linux" and "${ANDROID}" = "0"]; then  ./travis.linux.script.sh; fi
