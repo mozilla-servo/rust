@@ -17,7 +17,7 @@ tar zxvf llvm-for-rustc-linux.tgz
 
 # newest Android NDK
 if [ `uname -m` = x86_64]; then wget http://dl.google.com/android/ndk/android-ndk-r9c-linux-x86_64.tar.bz2 -O ndk.tgz; else wget http://dl.google.com/android/ndk/android-ndk-r9c-linux-x86.tar.bz2 -O ndk.tgz; fi
-tar -xf ndk.tgz
+tar -zxvf ndk.tgz
 `pwd`/android-ndk-r9c/build/tools/make-standalone-toolchain.sh --platform=android-14 --install-dir=`pwd`/ndk_standalone --ndk-dir=`pwd`/android-ndk-r9c
 export ANDROID_NDK_HOME=`pwd`/android-ndk-r9c
 export PATH=${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools:${ANDROID_NDK_HOME}
