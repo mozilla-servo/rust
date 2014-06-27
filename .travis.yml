@@ -5,24 +5,24 @@ os:
 - osx
 
 install:
-- if [ "${TRAVIS_OS_NAME}" = "linux" and "${ANDROID}" = "0"]; then  ./travis.linux.install.deps.sh; fi
+- if [ "${TRAVIS_OS_NAME}" = "linux" and "${ANDROID}" = "0" ]; then  ./travis.linux.install.deps.sh; fi
 - if [ "${TRAVIS_OS_NAME}" = "osx" and "${ANDROID}" = "0" ]; then ./travis.osx.install.deps.sh; fi
-- if [ "${TRAVIS_OS_NAME}" = "linux"  and "${ANDROID}" = "1"]; then  ./travis.linux-android.install.deps.sh; fi
-#- if [ "${TRAVIS_OS_NAME}" = "osx"  and "${ANDROID}" = "1"]; then ./travis.osx-android.install.deps.sh; fi
+- if [ "${TRAVIS_OS_NAME}" = "linux"  and "${ANDROID}" = "1" ]; then  ./travis.linux-android.install.deps.sh; fi
+#- if [ "${TRAVIS_OS_NAME}" = "osx"  and "${ANDROID}" = "1" ]; then ./travis.osx-android.install.deps.sh; fi
 
 before_script:
-- if [ "${TRAVIS_OS_NAME}" = "linux" and "${ANDROID}" = "0"]; then  ./travis.linux.before_script.sh; fi
-- if [ "${TRAVIS_OS_NAME}" = "osx" and "${ANDROID}" = "0"]; then ./travis.osx.before_script.sh; fi
-- if [ "${TRAVIS_OS_NAME}" = "linux" and "${ANDROID}" = "1"]; then  ./travis.linux-android.before_script.sh; fi
-#- if [ "${TRAVIS_OS_NAME}" = "osx" and "${ANDROID}" = "1"]; then ./travis.osx-android.before_script.sh; fi
+- if [ "${TRAVIS_OS_NAME}" = "linux" and "${ANDROID}" = "0" ]; then  ./travis.linux.before_script.sh; fi
+- if [ "${TRAVIS_OS_NAME}" = "osx" and "${ANDROID}" = "0" ]; then ./travis.osx.before_script.sh; fi
+- if [ "${TRAVIS_OS_NAME}" = "linux" and "${ANDROID}" = "1" ]; then  ./travis.linux-android.before_script.sh; fi
+#- if [ "${TRAVIS_OS_NAME}" = "osx" and "${ANDROID}" = "1" ]; then ./travis.osx-android.before_script.sh; fi
 - export NO_BENCH=1
 - export RUST_SHA=`git submodule | grep rust | sed -E 's/[\+-\ ]?([0-9a-f]+).*/\1/g'`
 
 script:
-- if [ "${TRAVIS_OS_NAME}" = "linux" and "${ANDROID}" = "0"]; then  ./travis.linux.script.sh; fi
-- if [ "${TRAVIS_OS_NAME}" = "osx" and "${ANDROID}" = "0"]; then ./travis.osx.script.sh; fi
-- if [ "${TRAVIS_OS_NAME}" = "linux" and "${ANDROID}" = "1"]; then  ./travis.linux-android.script.sh; fi
-#- if [ "${TRAVIS_OS_NAME}" = "osx" and "${ANDROID}" = "1"]; then ./travis.osx-android.script.sh; fi
+- if [ "${TRAVIS_OS_NAME}" = "linux" and "${ANDROID}" = "0" ]; then  ./travis.linux.script.sh; fi
+- if [ "${TRAVIS_OS_NAME}" = "osx" and "${ANDROID}" = "0" ]; then ./travis.osx.script.sh; fi
+- if [ "${TRAVIS_OS_NAME}" = "linux" and "${ANDROID}" = "1" ]; then  ./travis.linux-android.script.sh; fi
+#- if [ "${TRAVIS_OS_NAME}" = "osx" and "${ANDROID}" = "1" ]; then ./travis.osx-android.script.sh; fi
 
 env: 
  - ANDROID=1
