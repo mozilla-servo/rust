@@ -52,5 +52,7 @@ deploy:
   skip_cleanup: true
   upload-dir: $RUST_SHA
   on:
-    branch: travis snapshot
+    branch: 
+    - travis 
+    - snapshot
 
